@@ -232,16 +232,110 @@ Example:
 
 ### 1.6 Box Model
 
+- Margin
 
+  - margin-top, margin-right, margin-bottom, margin-left
+  - margin
 
+- Padding
 
+  - padding-top, padding-right, padding-bottom, padding-left
+  - pdding
 
+- border
 
+  - border-top, border-right, border-bottom, border-left
+  - border: borderWidth borderColor borderStyle;
+    
+    ```css
+    p {
+      border: 3px solid black;
+    }
+    ```
 
+- box-sizing: border-box
+- opacity: value; value can be between 0-1
+- display: inline/block
+- overflow: value; here default value is visible, hidden, auto, scroll
 
+### 1.7 Background
 
+- How to set background image in webpage
 
-### 4.1 Flexbox properties
+  - background-image, background-position, background-size, background-repeat
+
+    ```css
+    body {
+      background-image: url("./images/me.JPG");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      background-position: center;
+    }
+    ```
+
+- background: linear-gradient(direction, colors)
+
+  ```css
+  .banner {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(to right, green, orange);
+  }
+  ```
+
+### 1.8 CSS Layout - float and clear
+
+- float: left/right
+- clear: left/right/both
+- example: create 3 div in html and add div1, div2, div3 classes with them
+
+  ```css
+  .div1 {
+    width: 50%;
+    height: 10rem;
+    background-color: orange;
+    float: left;
+  }
+  .div2 {
+    width: 50%;
+    height: 10rem;
+    background-color: plum;
+    float: left;
+  }
+  .clear-div {
+    clear: both;
+  }
+  .div3 {
+    height: 10rem;
+    background-color: burlywood;
+  }
+  ```
+
+### 1.9 CSS Layout - Position and z-index
+
+- `position: static(default)/absolute/relative/fixed/sticky`
+- make sure to use top, right, bottom, left property with position property
+- `z-index: value;` value can be negative or positive  
+Example:
+
+  ```html
+  <body>
+    <h1>This is a heading</h1>
+    <img src="img_tree.png">
+    <p>Because the image has a z-index of -1, it will be placed behind the text.</p>
+  </body>
+  ```
+  ```css
+  img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+  }
+  ```
+
+### 2.0 CSS Layout : Flexbox properties
 
 - flex-direction, flex-wrap, justify-content, align-items, flex-grow, flex-shrink
 
@@ -304,7 +398,7 @@ Example:
         }
         ```
 
-### 1.2 Grid Layout
+### 2.1 CSS Layout :  Grid
 
 - grid-template-columns, grid-template-rows, grid-gap, grid-column, grid-row
 
@@ -364,4 +458,121 @@ Example:
         'menu main main main right right'
         'menu footer footer footer footer footer';
     }
+    ```
+
+### 2.2 text-shadow and box-shadow
+
+- text-shadow: x-value y-value blur-value color
+- box-shadow: x-value y-value color
+- box-shadow: x-value y-value blur-radius color
+- box-shadow: inset x-value y-value color
+
+  ```css
+  h1 {
+    text-shadow: 2px 2px 8px #FF0000;
+  }
+  .myDiv {
+    box-shadow: 10px 10px 8px #888888;
+  }
+  ```
+
+### 2.3 CSS Transforms, Transitions, Animations
+
+- 2D Transforms - translate(x,y) , scale(x, y) , rotate(angle) , skew(angle)
+- 3D Transforms - rotateX(angle) , rotateY(angle) , rotateZ(angle)
+
+  | Function | Description |
+  | ------ | ------ |
+  | translate(x,y) | Defines a 2D translation, moving the element along the X- and the Y-axis |
+  | scale(x,y) | Defines a 2D scale transformation, changing the elements width and height |
+  | rotate(angle) | 	Defines a 2D rotation, the angle is specified in the parameter |
+  | skew(x-angle,y-angle) | Defines a 2D skew transformation along the X- and the Y-axis |
+  | rotateX(angle) | 	Defines a 3D rotation along the X-axis |
+  | rotateY(angle) | 	Defines a 3D rotation along the Y-axis |
+  | rotateZ(angle) | Defines a 3D rotation along the Z-axis |
+
+  - __Note :__ The translate() method moves an element from its current position
+  - __Note :__ The scale() method increases or decreases the size of an element
+  - __Note :__ The skew() method skews an element into a given angle.
+  - __Note :__ The rotate() method rotates an element clockwise or counter-clockwise.
+
+    ```css
+    .div1:hover {
+      transform: rotate(-120deg);
+    }
+    .div2:hover {
+      transform: scale(2,-2);
+    }
+    .div3:hover {
+      transform: translate(50px, 100px);
+    }
+    .div4.hover {
+      transform: scale(2, 3);
+    }
+    ```
+
+- Transitions 
+
+  | Property | Description |
+  | ------ | ------ |
+  | transition | A shorthand property for setting the four transition properties into a single property |
+  | transition-delay | Specifies a delay (in seconds) for the transition effect |
+  | transition-duration | Specifies how many seconds or milliseconds a transition effect takes to complete |
+  | transition-property | Specifies the name of the CSS property the transition effect is for |
+  | transition-timing-function | 	Specifies the speed curve of the transition effect |
+
+  ```css
+  div {
+    transition-property: width;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+  }
+  ```
+
+- Animations properties
+
+  - @keyframes
+  - animation-name
+  - animation-duration
+  - animation-delay
+  - animation-iteration-count
+  - animation-direction
+  - animation-timing-function
+  - animation-fill-mode
+  - animation  
+
+    ```html
+    <html>
+      <head>
+        <title>Document</title>
+        <style> 
+          div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation-name: example;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+
+          @keyframes example {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left:200px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color:green; left:0px; top:200px;}
+            100% {background-color:red; left:0px; top:0px;}
+          }
+        </style>
+      </head>
+    <body>
+      <h1>CSS Animation</h1>
+      <p>This example uses six of the animation properties:</p>
+      <div></div>
+    </body>
+    </html>
     ```
